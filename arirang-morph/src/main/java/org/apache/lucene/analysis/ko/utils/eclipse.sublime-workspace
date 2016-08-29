@@ -1,0 +1,351 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Users/isumyeong/Downloads/lucene-4.6.1 3/demo/src/java/org/apache/lucene/demo/IndexFiles.java",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/isumyeong/Documents/Works/2014.Ewha.Gotit/Design/2014_02_03 이화여대 수정/css/common.css",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/isumyeong/Documents/Works/2014.Ewha.Gotit/Design/0108_이화여대_R2GotIt_html/html/04_통계보기-추천통계.html",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/isumyeong/Documents/Works/2014.Ewha.Gotit/Design/0108_이화여대_R2GotIt_html/html/05_통계보기-조회통계.html",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "",
+			"file": "/Users/isumyeong/Documents/Works/2014.Ewha.Gotit/Design/2014_02_03 이화여대 수정/css/recommend.css",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/isumyeong/Downloads/lucene-4.6.1 3/demo/src/java/org/apache/lucene/demo/SearchFiles.java",
+		"/Users/isumyeong/Documents/eclipsWorks/workspace_gotit/2014.EWHA.Gotit.app/conf/profile.xml",
+		"/Users/isumyeong/Documents/eclipsWorks/workspace_gotit/2014.EWHA.Gotit.app/conf/subModule.xml",
+		"/Users/isumyeong/Documents/eclipsWorks/work_solr/bmt/.project",
+		"/Users/isumyeong/Documents/eclipsWorks/workspace/arirang.morph/src/main/java/org/apache/lucene/analysis/ko/utils/Utilities.java",
+		"/Users/isumyeong/Documents/eclipsWorks/workspace/arirang.morph/src/main/java/org/apache/lucene/analysis/ko/utils/MorphUtil.java",
+		"/Users/isumyeong/Documents/Software/ctl.sh",
+		"/Applications/alfresco-4.2.e/tomcat/bin/startup.sh",
+		"/Applications/alfresco-4.2.e/tomcat/scripts/ctl.sh",
+		"/Applications/alfresco-4.2.e/tomcat/logs/catalina.out",
+		"/Users/isumyeong/Desktop/eclipse/eclipse",
+		"/Applications/alfresco-4.2.e/tomcat/webapps/alfresco/WEB-INF/classes/alfresco/module/de.fme.alfresco.JavascriptConsole-repo/module.properties",
+		"/Applications/alfresco-4.2.e/tomcat/webapps/alfresco/WEB-INF/classes/alfresco/module/org.alfresco.integrations.google.docs/module.properties",
+		"/Applications/alfresco-4.2.e/tomcat/bin/catalina.bat",
+		"/Applications/alfresco-4.2.e/alfresco.log",
+		"/Users/isumyeong/git/js-console/javascript-console-repo/src/main/amp/module.properties",
+		"/Applications/alfresco-4.2.e/tomcat/bin/catalina.sh",
+		"/Applications/alfresco-4.2.e/alfresco.log.2014-01-12",
+		"/Applications/alfresco-4.2.e/solr.log",
+		"/Applications/alfresco-4.2.e/share.log"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"수정",
+			"awt.headless",
+			"jpda"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/isumyeong/Downloads/lucene-4.6.1 3/demo/src/java/org/apache/lucene/demo/IndexFiles.java",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"is_preview": true,
+							"syntax": "Packages/Java/Java.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 11.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/isumyeong/Documents/Works/2014.Ewha.Gotit/Design/2014_02_03 이화여대 수정/css/common.css",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2409.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 2,
+					"file": "/Users/isumyeong/Documents/Works/2014.Ewha.Gotit/Design/0108_이화여대_R2GotIt_html/html/04_통계보기-추천통계.html",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"is_preview": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1666.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/isumyeong/Documents/Works/2014.Ewha.Gotit/Design/0108_이화여대_R2GotIt_html/html/05_통계보기-조회통계.html",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"is_preview": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1801.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/Users/isumyeong/Documents/Works/2014.Ewha.Gotit/Design/2014_02_03 이화여대 수정/css/recommend.css",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 11.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 160.0,
+	"status_bar_visible": true
+}
