@@ -32,7 +32,7 @@ public class MorphAnalyzerTest extends TestCase {
 
 	public void testAnalyzer() throws Exception {
 		MorphAnalyzer analyzer = new MorphAnalyzer();
-		String text = "어머니가 고명이 가득가득하게 국수를 주셨다.";
+		String text = "버전 관리를 위해선 이것이 필요하다.";
 		
 		CompoundNounAnalyzer cnAnalyzer = new CompoundNounAnalyzer();
 		StringTokenizer str = new StringTokenizer(text,".");
