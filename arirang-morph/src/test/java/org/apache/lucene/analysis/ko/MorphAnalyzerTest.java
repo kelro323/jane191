@@ -52,7 +52,6 @@ public class MorphAnalyzerTest extends TestCase {
 			}
 		}
 	
-		
 		String input ="도셨다";
 		List<AnalysisOutput> candidates = new ArrayList<AnalysisOutput>();
 		boolean josaFlag = true;

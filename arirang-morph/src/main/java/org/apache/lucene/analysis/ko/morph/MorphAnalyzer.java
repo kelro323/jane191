@@ -302,7 +302,7 @@ public class MorphAnalyzer {
     	
     	if(o.getPos() == PatternConstants.POS_NOUN) {
     		if(entry!=null) o.setPosType(entry.getFeature(WordEntry.IDX_NOUN));
-    		else o.setPosType('@');
+    		else o.setPosType('@'); //사전에 없는 단어는 타입@로 출력
     		//if(o.getEomi()!=null) o.setEomiType(); // 어미 종류도 구별하면 좋을 듯 하여 추가 예정
     		//if(o.getJosa()!=null) o.setJosaType(); // 조사 종류도 구별하면 좋을 듯 하여 추가 예정
     	} else if(o.getPos() == PatternConstants.POS_VERB) {
