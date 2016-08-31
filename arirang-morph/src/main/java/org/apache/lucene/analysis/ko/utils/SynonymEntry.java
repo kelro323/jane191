@@ -1,23 +1,29 @@
 package org.apache.lucene.analysis.ko.utils;
 
 public class SynonymEntry {
-	public static final int IDX_CHARACTER = 0;
-	public static final int IDX_TECH = 1;
-	public static final int IDX_KNOWLEDGE = 2;
 	
 	private String word;
 	
 	private String category;
 	
+	private String detail;
+	
 	private int degree;
 	
 	public SynonymEntry() {
-		
 	}
 	
-	public SynonymEntry(String word, String category, int degree) {
+	public SynonymEntry(String word, String category, String detail) {
 		this.word = word;
 		this.category = category;
+		this.detail = detail;
+		this.degree = 10;
+	}
+	
+	public SynonymEntry(String word, String category, String detail, int degree) {
+		this.word = word;
+		this.category = category;
+		this.degree = degree;
 	}
 	
 	public void setWord(String word) {
@@ -34,6 +40,14 @@ public class SynonymEntry {
 	
 	public String getCategory() {
 		return category;
+	}
+	
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+	
+	public String getDetail() {
+		return detail;
 	}
 	
 	public void setDegree(int degree) {

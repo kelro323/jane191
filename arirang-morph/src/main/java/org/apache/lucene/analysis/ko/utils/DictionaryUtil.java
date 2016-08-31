@@ -79,8 +79,8 @@ public class DictionaryUtil {
     for(String str:synList) {
     	String[] infos = str.split(",");
     	if(infos.length!=3) continue;
-    	SynonymEntry entry = new SynonymEntry(infos[0].trim(),infos[1].trim(),
-    			Integer.parseInt(infos[2].trim()));
+    	SynonymEntry entry = new SynonymEntry(infos[0].trim(),infos[1].trim(),infos[2].trim(),
+    			Integer.parseInt(infos[3].trim()));
     	synonym.put(entry.getWord(), entry);
     }*/
     
