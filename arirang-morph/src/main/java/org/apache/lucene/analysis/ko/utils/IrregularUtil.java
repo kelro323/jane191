@@ -142,8 +142,8 @@ public class IrregularUtil {
       
     char convEnd = MorphUtil.makeChar(end.charAt(0), 0);
     if("ㅁ".equals(end)||"ㄴ".equals(end)||"ㄹ".equals(end)||
-        convEnd=='아'||convEnd=='어') { // 도우(돕), 고오(곱), 스러우(스럽) 등으로 변형되므로 반드시 2자 이상임
-      
+        convEnd=='아'||convEnd=='어'||end.startsWith("ㄴ")) { // 도우(돕), 고오(곱), 스러우(스럽) 등으로 변형되므로 반드시 2자 이상임
+      //무거운지, 가벼운지 같은 불규칙에 어미가 'ㄴ지'를 체크하지 못하여 end.startsWith("ㄴ")추가
       char ch = start.charAt(start.length()-2);
       ch = MorphUtil.makeChar(ch, 17);
     

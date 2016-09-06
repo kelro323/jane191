@@ -24,6 +24,7 @@ import org.apache.lucene.analysis.ko.utils.KoreanEnv;
 import org.apache.lucene.analysis.ko.utils.MorphUtil;
 import org.apache.lucene.analysis.ko.utils.NounUtil;
 import org.apache.lucene.analysis.ko.utils.SyllableUtil;
+import org.apache.lucene.analysis.ko.utils.Utilities;
 import org.apache.lucene.analysis.ko.utils.VerbUtil;
 
 import junit.framework.TestCase;
@@ -32,7 +33,7 @@ public class MorphAnalyzerTest extends TestCase {
 
 	public void testAnalyzer() throws Exception {
 		MorphAnalyzer analyzer = new MorphAnalyzer();
-		String text = "버전 관리를 위해선 이것이 필요하다.";
+		String text = "책을 읽어는 보았다.";
 		
 		CompoundNounAnalyzer cnAnalyzer = new CompoundNounAnalyzer();
 		StringTokenizer str = new StringTokenizer(text,".");
@@ -52,28 +53,15 @@ public class MorphAnalyzerTest extends TestCase {
 			}
 		}
 	
-		String input ="도셨다";
+		String input ="사랑한지";
 		List<AnalysisOutput> candidates = new ArrayList<AnalysisOutput>();
 		boolean josaFlag = true;
 		boolean eomiFlag = true;
-		String stem = "도셨";
-		String end = "다";
-		String[] morphs = EomiUtil.splitEomi(stem, end);
+		String stem = "무거운";
+		String eomi = "지";
+		String[] morphs = EomiUtil.splitEomi(stem, eomi);
+
 		
-		String[] pomis = EomiUtil.splitPomi(morphs[0]);
-		char[] jasos = MorphUtil.decompose(pomis[1].charAt(0));
-		
-		String[] results = new String[2];  
-	    results[0] = morphs[0];
-	  
-	    char[] chrs = morphs[0].toCharArray();
-	    
-	    int len = chrs.length;
-	    String pomi = "";
-	    int index = len-1;
-	  
-	    char[] jaso = MorphUtil.decompose(chrs[index]);
-	   
 	    /*        
 		int strlen = input.length();
 		boolean isVerbOnly = false;
