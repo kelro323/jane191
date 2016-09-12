@@ -23,6 +23,7 @@ public class SynonymEntry {
 	public SynonymEntry(String word, String category, String detail, int degree) {
 		this.word = word;
 		this.category = category;
+		this.detail = detail;
 		this.degree = degree;
 	}
 	
