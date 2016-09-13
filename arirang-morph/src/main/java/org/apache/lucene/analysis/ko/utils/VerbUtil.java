@@ -170,10 +170,12 @@ public class VerbUtil {
     o.setPos(PatternConstants.POS_NOUN);
         
     if(entry!=null) {
-    	//부사와 형용사의 능통태 처리를 위해서 변경 
+    	//부사와 형용사의 능통태 처리를 위해서 변경  
     	if(entry.getFeature(WordEntry.IDX_NOUN)=='0' && entry.getFeature(WordEntry.IDX_BUSA)=='0' 
     			&& entry.getFeature(WordEntry.IDX_VERB)=='0') return false;
     	else if(entry.getFeature(WordEntry.IDX_NOUN)!='0') {
+    		//대명사는 NSM형태가 없으므로 제외하기 위해서
+    		//if(entry.getFeature(WordEntry.IDX_NOUN=='d') return false;
     		if(o.getVsfx().equals("하")&&entry.getFeature(WordEntry.IDX_DOV)!='1') return false;
     	    else if(o.getVsfx().equals("되")&&entry.getFeature(WordEntry.IDX_BEV)!='1') return false;
     	    else if(o.getVsfx().equals("내")&&entry.getFeature(WordEntry.IDX_NE)!='1') return false;
