@@ -186,6 +186,20 @@ public class MorphAnalyzer {
         			o.setScore(AnalysisOutput.SCORE_CORRECT);
         		}
         	}
+        	//이다의 축약형 '다'의 처리를 위해서 추가한 부분인데, 변경이 필요함 
+        	//ex)'사이다'같은 경우 사이다(N),사이(N)+다(j)의 형태가 가능한데 이럴 경우 둘 다 출력하기 위해서 필요함
+        	//'다'의 조사 추가는 많은 오류가 생길 가능성이 있으므로 현재 배제 중
+        	if(o.getScore()==AnalysisOutput.SCORE_SIM_CORRECT && o.getStem().endsWith("다")) {
+        		WordEntry entry1 = 
+        				DictionaryUtil.getAllNoun(o.getStem().substring(0, o.getStem().length()-1));
+        		WordEntry entry2 = DictionaryUtil.getAllNoun(o.getStem());
+        		if(entry1!=null && entry2==null) {
+        			o.setPatn(PatternConstants.PTN_NJ);
+        			o.setJosa(o.getStem().substring(o.getStem().length()-1));
+        			o.setStem(o.getStem().substring(0, o.getStem().length()-1));
+        			o.setScore(AnalysisOutput.SCORE_CORRECT);
+        		}
+        	}
           addResults(o,results,stems);
         }
         else if(noun==null) 
@@ -231,7 +245,9 @@ public class MorphAnalyzer {
       }
     }      
 
-    if(compound!=null) addResults(compound,results,stems);
+    if(compound!=null) {
+    	addResults(compound,results,stems);
+    }
     
     if(results.size()==0) {
       AnalysisOutput output = new AnalysisOutput(input, null, null, PatternConstants.PTN_N, AnalysisOutput.SCORE_ANALYSIS);
