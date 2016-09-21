@@ -83,6 +83,7 @@ public class NounUtil {
               
     if(DictionaryUtil.getVerb(o.getStem())!=null) {
       o.setPos(PatternConstants.POS_VERB);
+      o.setUsedPos(PatternConstants.POS_NOUN);
       o.setPatn(PatternConstants.PTN_VMJ);
       o.setScore(AnalysisOutput.SCORE_CORRECT);
       candidates.add(o);
@@ -110,6 +111,7 @@ public class NounUtil {
     if(DictionaryUtil.getVerb(o.getStem())!=null) {
       o.setPatn(PatternConstants.PTN_VMJ);
       o.setPos(PatternConstants.POS_VERB);
+      o.setUsedPos(PatternConstants.POS_NOUN);
       o.setScore(AnalysisOutput.SCORE_CORRECT);
       candidates.add(o);
       return true;
@@ -151,6 +153,7 @@ public class NounUtil {
       if(DictionaryUtil.getVerb(o.getStem())!=null) {
         o.setPatn(PatternConstants.PTN_VMXMJ);
         o.setPos(PatternConstants.POS_VERB);
+        o.setUsedPos(PatternConstants.POS_NOUN);
         o.setScore(AnalysisOutput.SCORE_CORRECT);
         candidates.add(o);
         return true;
@@ -178,6 +181,7 @@ public class NounUtil {
     o.setStem(o.getStem().substring(0,idxVbSfix));
     o.setPatn(PatternConstants.PTN_NSMJ);
     o.setPos(PatternConstants.POS_NOUN);
+    o.setUsedPos(PatternConstants.POS_NOUN);
       
     WordEntry entry = DictionaryUtil.getWordExceptVerb(o.getStem());
 
@@ -205,6 +209,7 @@ public class NounUtil {
     o.setStem(o.getStem().substring(0,idxVbSfix));
     o.setPatn(PatternConstants.PTN_NSMXMJ);
     o.setPos(PatternConstants.POS_NOUN);
+    o.setUsedPos(PatternConstants.POS_NOUN);
       
     WordEntry entry = DictionaryUtil.getWordExceptVerb(o.getStem());
 

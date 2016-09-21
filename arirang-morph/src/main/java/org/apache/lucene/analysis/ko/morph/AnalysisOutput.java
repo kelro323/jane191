@@ -55,6 +55,7 @@ public class AnalysisOutput implements Cloneable {
   private char posType;
   private char josaType;
   private char eomiType;
+  private char usedPos;
   
   public AnalysisOutput() {
     this.score = SCORE_FAIL;
@@ -225,7 +226,7 @@ public class AnalysisOutput implements Cloneable {
   }
   
   /*
-   * 사전파일에서 형태 char를 등록하기 위한 메소드
+   * 사전파일에서 형태 char를 출력을 위한
    */
   public void setPosType(char posType) {
 	  this.posType = posType;
@@ -249,6 +250,14 @@ public class AnalysisOutput implements Cloneable {
   
   public char getEomiType() {
 	  return eomiType;
+  }
+  //실제 사용되는 형태 정보
+  public void setUsedPos(char usedPos) {
+	  this.usedPos = usedPos;
+  }
+  
+  public char getUsedPos() {
+	  return usedPos;
   }
   /**
    * @return the source

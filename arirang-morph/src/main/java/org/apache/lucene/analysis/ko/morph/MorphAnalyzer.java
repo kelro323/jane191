@@ -171,7 +171,7 @@ public class MorphAnalyzer {
         	//복합어 중에서 체언+조사(들, 뿐)을 더 분할하기 위한 조건 문, 새로운 패턴인 NJSM을 추가 ,의존명사이나 '들'은 접사로 '뿐'은 (보)조사로 쓰임
         	//단일 음절이므로 결과값은 similar correct가 나올 것 이고 어간의 끝 음절이 '들','뿐'인지 체크
         	//'들'이 나오는 대부분의 유형인 NJ에서는 조사에 그냥 '들'을 포함. (차후 접사 항목 추가시 접사로 이동) -> 이럼 addResult 메소드의 조건값도 변경해야함
-        	//'뿐'이 나오는 대부분의 유형인 NJM에선 NJSM 새로운 패턴으로 변환.
+        	//'뿐'이 나오는 대부분의 유형인 NSM에선 NJSM 새로운 패턴으로 변환.
         	if(o.getScore()==AnalysisOutput.SCORE_SIM_CORRECT && 
         			(o.getStem().endsWith("들")||o.getStem().endsWith("뿐"))) {
         		int stlength = o.getStem().length();
@@ -189,11 +189,12 @@ public class MorphAnalyzer {
         	//이다의 축약형 '다'의 처리를 위해서 추가한 부분인데, 변경이 필요함 
         	//ex)'사이다'같은 경우 사이다(N),사이(N)+다(j)의 형태가 가능한데 이럴 경우 둘 다 출력하기 위해서 필요함
         	//'다'의 조사 추가는 많은 오류가 생길 가능성이 있으므로 현재 배제 중
-        	if(o.getScore()==AnalysisOutput.SCORE_SIM_CORRECT && o.getStem().endsWith("다")) {
-        		WordEntry entry1 = 
+        	if(o.getScore()==AnalysisOutput.SCORE_SIM_CORRECT 
+        			&& o.getPatn() == PatternConstants.PTN_N && o.getStem().endsWith("다")) {
+        		WordEntry entry = 
         				DictionaryUtil.getAllNoun(o.getStem().substring(0, o.getStem().length()-1));
-        		WordEntry entry2 = DictionaryUtil.getAllNoun(o.getStem());
-        		if(entry1!=null && entry2==null) {
+        		
+        		if(entry!=null ) {
         			o.setPatn(PatternConstants.PTN_NJ);
         			o.setJosa(o.getStem().substring(o.getStem().length()-1));
         			o.setStem(o.getStem().substring(0, o.getStem().length()-1));
@@ -253,6 +254,7 @@ public class MorphAnalyzer {
       AnalysisOutput output = new AnalysisOutput(input, null, null, PatternConstants.PTN_N, AnalysisOutput.SCORE_ANALYSIS);
       output.setSource(input);
       output.setPos(PatternConstants.POS_NOUN);
+      output.setUsedPos(PatternConstants.POS_NOUN);
       results.add(output);
     }
     
@@ -392,6 +394,7 @@ public class MorphAnalyzer {
     
     AnalysisOutput output = new AnalysisOutput(word, null, null, PatternConstants.PTN_N);
     output.setPos(PatternConstants.POS_NOUN);
+    output.setUsedPos(PatternConstants.POS_NOUN);
     //명사, 부사 둘다 사용 가능한 단어의 경우 결과값을 다 출력하기 위해 수정
     WordEntry entry;
     if((entry=DictionaryUtil.getWord(word))!=null) {
@@ -405,6 +408,7 @@ public class MorphAnalyzer {
     			} 
     			AnalysisOutput busa = new AnalysisOutput(word, null, null, PatternConstants.PTN_AID);
         		busa.setPos(PatternConstants.POS_AID);
+        		busa.setUsedPos(PatternConstants.POS_AID);
         		busa.setScore(AnalysisOutput.SCORE_CORRECT);
         		candidates.add(busa);    			
     		}else{
@@ -418,6 +422,7 @@ public class MorphAnalyzer {
     	} else if(entry.getFeature(WordEntry.IDX_BUSA)!='0') {
     		AnalysisOutput busa = new AnalysisOutput(word, null, null, PatternConstants.PTN_AID);
     		busa.setPos(PatternConstants.POS_AID);
+    		busa.setUsedPos(PatternConstants.POS_AID);
     		busa.setScore(AnalysisOutput.SCORE_CORRECT);
     		candidates.add(0, busa);
     	}
@@ -481,6 +486,7 @@ public class MorphAnalyzer {
 
     AnalysisOutput output = new AnalysisOutput(stem, end, null, PatternConstants.PTN_NJ);
     output.setPos(PatternConstants.POS_NOUN);
+    output.setUsedPos(PatternConstants.POS_NOUN);
     
     boolean success = false;
     try {
@@ -495,6 +501,7 @@ public class MorphAnalyzer {
       //명사형이 없이 부사형만 있을대 조사가 연결되면 ADVJ로 출력
       if(entry.getFeature(WordEntry.IDX_NOUN)=='0'&&entry.getFeature(WordEntry.IDX_BUSA)!='0') {
         output.setPos(PatternConstants.POS_AID);
+        output.setUsedPos(PatternConstants.POS_AID);
         output.setPatn(PatternConstants.PTN_ADVJ);
       }
       if(entry.getCompounds().size()>1) output.addCNoun(entry.getCompounds());
@@ -529,6 +536,7 @@ public class MorphAnalyzer {
 
     AnalysisOutput o = new AnalysisOutput(pomis[0],null,morphs[1],PatternConstants.PTN_VM);
     o.setPomi(pomis[1]);
+    o.setUsedPos(PatternConstants.POS_VERB);
   
     try {    
 

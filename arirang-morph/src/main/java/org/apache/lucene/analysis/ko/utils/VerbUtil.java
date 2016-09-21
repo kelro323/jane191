@@ -132,7 +132,8 @@ public class VerbUtil {
     }
      
     o.setPatn(PatternConstants.PTN_NJCM);
-    o.setPos(PatternConstants.POS_NOUN);  
+    o.setPos(PatternConstants.POS_NOUN);
+    o.setUsedPos(PatternConstants.POS_VERB);
     candidates.add(o);
      
     return true;
@@ -168,6 +169,7 @@ public class VerbUtil {
 
     o.setPatn(PatternConstants.PTN_NSM);
     o.setPos(PatternConstants.POS_NOUN);
+    o.setUsedPos(PatternConstants.POS_VERB);
         
     if(entry!=null) {
     	//부사와 형용사의 능통태 처리를 위해서 변경  
@@ -194,6 +196,7 @@ public class VerbUtil {
     		else if(o.getVsfx().equals("내")&&entry.getFeature(WordEntry.IDX_NE)!='1') return false;
     		else if(o.getVsfx().equals("이")&&o.getEomi().equals("어")) return false;
     		o.setPos(PatternConstants.POS_VERB);
+    		o.setUsedPos(PatternConstants.POS_VERB);
     		o.setScore(AnalysisOutput.SCORE_CORRECT);
     	}
     	/*
@@ -238,6 +241,7 @@ public class VerbUtil {
     o.setStem(stomis[0].substring(0,idxVbSfix));
     o.setPatn(PatternConstants.PTN_NSMXM);
     o.setPos(PatternConstants.POS_NOUN);
+    o.setUsedPos(PatternConstants.POS_VERB);
     WordEntry entry = DictionaryUtil.getNoun(o.getStem());
 //    if(entry==null&&NounUtil.confirmCNoun(o)&&o.getCNounList().size()>0)  {
 //      entry = DictionaryUtil.getNoun(o.getCNounList().get(o.getCNounList().size()-1));
@@ -290,6 +294,7 @@ public class VerbUtil {
       o.addElist("이");
       if(DictionaryUtil.getVerb(o.getStem())!=null) {
         o.setPos(PatternConstants.POS_VERB);
+        o.setUsedPos(PatternConstants.POS_VERB);
         o.setPatn(PatternConstants.PTN_VMCM);
         o.setScore(AnalysisOutput.SCORE_CORRECT);
         candidates.add(o);
@@ -335,6 +340,7 @@ public class VerbUtil {
 
     if(DictionaryUtil.getVerb(o.getStem())!=null) {
       o.setPos(PatternConstants.POS_VERB);
+      o.setUsedPos(PatternConstants.POS_VERB);
       o.setPatn(PatternConstants.PTN_VMXM);
       o.setScore(AnalysisOutput.SCORE_CORRECT);
       candidates.add(o);
