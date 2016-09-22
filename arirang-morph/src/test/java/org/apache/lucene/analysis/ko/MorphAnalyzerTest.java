@@ -33,7 +33,7 @@ public class MorphAnalyzerTest extends TestCase {
 
 	public void testAnalyzer() throws Exception {
 		MorphAnalyzer analyzer = new MorphAnalyzer();
-		String text = "그가 사랑하는 사람은 글을 쓰는 그 사람이다.";
+		String text = "그가 사랑하는 사람은 빠르게 글을 쓰는 그 사람이다.";
 		
 		CompoundNounAnalyzer cnAnalyzer = new CompoundNounAnalyzer();
 		StringTokenizer str = new StringTokenizer(text,".");
