@@ -33,7 +33,7 @@ public class MorphAnalyzerTest extends TestCase {
 
 	public void testAnalyzer() throws Exception {
 		MorphAnalyzer analyzer = new MorphAnalyzer();
-		String text = "그가 사랑하는 사람은 빠르게 글을 쓰는 그 사람이다.";
+		String text = "사람은 동물이니 장미는 식물이다.";
 		
 		CompoundNounAnalyzer cnAnalyzer = new CompoundNounAnalyzer();
 		StringTokenizer str = new StringTokenizer(text,".");
@@ -61,8 +61,7 @@ public class MorphAnalyzerTest extends TestCase {
 		String stem = "무거운";
 		String eomi = "지";
 		String[] morphs = EomiUtil.splitEomi(stem, eomi);
-
-		
+	
 	    /*        
 		int strlen = input.length();
 		boolean isVerbOnly = false;
