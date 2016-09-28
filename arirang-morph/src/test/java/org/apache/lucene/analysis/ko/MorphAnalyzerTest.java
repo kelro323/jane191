@@ -33,7 +33,7 @@ public class MorphAnalyzerTest extends TestCase {
 
 	public void testAnalyzer() throws Exception {
 		MorphAnalyzer analyzer = new MorphAnalyzer();
-		String text = "사람은 동물이니 장미는 식물이다.";
+		String text = "나는 그녀를 사랑하다.";
 		
 		CompoundNounAnalyzer cnAnalyzer = new CompoundNounAnalyzer();
 		StringTokenizer str = new StringTokenizer(text,".");
@@ -46,7 +46,7 @@ public class MorphAnalyzerTest extends TestCase {
 				outputs = analyzer.analyze(info2);
 				for(AnalysisOutput o : outputs) {
 					System.out.println(o+", "+o.getPatn()+", "+
-				o.getScore()+", "+o.getPos()+" RP:"+o.getUsedPos());
+				o.getScore()+", "+o.getPos()+" RP:"+o.getUsedPos()+"/"+o.getUsedPosType());
 					
 					//System.out.println(o.getVsfx()+", "+o.getEomi());
 				}

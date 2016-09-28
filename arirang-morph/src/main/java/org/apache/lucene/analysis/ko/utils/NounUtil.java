@@ -187,8 +187,8 @@ public class NounUtil {
 
     if(entry!=null) {
       if(entry.getFeature(WordEntry.IDX_NOUN)=='0') return false;
-      else if(o.getVsfx().equals("하")&&entry.getFeature(WordEntry.IDX_DOV)!='1') return false;
-      else if(o.getVsfx().equals("되")&&entry.getFeature(WordEntry.IDX_BEV)!='1') return false;
+      else if(o.getVsfx().equals("하")&&entry.getFeature(WordEntry.IDX_DOV)=='0') return false;
+      else if(o.getVsfx().equals("되")&&entry.getFeature(WordEntry.IDX_BEV)=='0') return false;
       else if(o.getVsfx().equals("내")&&entry.getFeature(WordEntry.IDX_NE)!='1') return false;
       o.setScore(AnalysisOutput.SCORE_CORRECT); // '입니다'인 경우 인명 등 미등록어가 많이 발생되므로 분석성공으로 가정한다.      
     }else {
@@ -215,8 +215,8 @@ public class NounUtil {
 
     if(entry!=null) {
       if(entry.getFeature(WordEntry.IDX_NOUN)=='0') return false;
-      else if(o.getVsfx().equals("하")&&entry.getFeature(WordEntry.IDX_DOV)!='1') return false;
-      else if(o.getVsfx().equals("되")&&entry.getFeature(WordEntry.IDX_BEV)!='1') return false;
+      else if(o.getVsfx().equals("하")&&entry.getFeature(WordEntry.IDX_DOV)=='0') return false;
+      else if(o.getVsfx().equals("되")&&entry.getFeature(WordEntry.IDX_BEV)=='0') return false;
       else if(o.getVsfx().equals("내")&&entry.getFeature(WordEntry.IDX_NE)!='1') return false;
       o.setScore(AnalysisOutput.SCORE_CORRECT); // '입니다'인 경우 인명 등 미등록어가 많이 발생되므로 분석성공으로 가정한다.      
     }else {

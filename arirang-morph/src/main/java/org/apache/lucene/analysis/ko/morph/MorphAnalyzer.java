@@ -317,18 +317,45 @@ public class MorphAnalyzer {
     	//세부 항목값 입출력을 위한 부분.
     	WordEntry entry = DictionaryUtil.getWord(o.getStem());
     	
-    	
     	if(o.getPos() == PatternConstants.POS_NOUN) {
-    		if(entry!=null) o.setPosType(entry.getFeature(WordEntry.IDX_NOUN));
-    		else o.setPosType('@'); //사전에 없는 단어는 타입@로 출력
+    		if(entry!=null) {
+    			o.setPosType(entry.getFeature(WordEntry.IDX_NOUN));
+    			if(o.getPatn()==PatternConstants.PTN_NSM) {
+    				if(o.getVsfx().equals("하")) o.setUsedPosType(entry.getFeature(WordEntry.IDX_DOV));
+    				else if(o.getVsfx().equals("내")) o.setUsedPosType(entry.getFeature(WordEntry.IDX_BEV));
+    			} else {
+    				o.setUsedPosType(entry.getFeature(WordEntry.IDX_NOUN));
+    			}
+    		}
+    		else {
+    			o.setPosType('@'); //사전에 없는 단어는 타입 @로 출력
+    			o.setUsedPosType('@');
+    		}
     		//if(o.getEomi()!=null) o.setEomiType(); // 어미 종류도 구별하면 좋을 듯 하여 추가 예정
     		//if(o.getJosa()!=null) o.setJosaType(); // 조사 종류도 구별하면 좋을 듯 하여 추가 예정
     	} else if(o.getPos() == PatternConstants.POS_VERB) {
-    		if(entry!=null) o.setPosType(entry.getFeature(WordEntry.IDX_VERB));
-    		else o.setPosType('@');
+    		if(entry!=null) {
+    			o.setPosType(entry.getFeature(WordEntry.IDX_VERB));
+    			o.setUsedPosType(entry.getFeature(WordEntry.IDX_VERB));
+    		}
+    		else {
+    			o.setPosType('@');
+    			o.setUsedPosType('@');
+    		}
     	} else if(o.getPos() == PatternConstants.POS_AID) {
-    		if(entry!=null)	o.setPosType(entry.getFeature(WordEntry.IDX_BUSA));
-    		else o.setPosType('@');
+    		if(entry!=null)	{
+    			o.setPosType(entry.getFeature(WordEntry.IDX_BUSA));
+    			if(o.getPatn()==PatternConstants.PTN_NSM) {
+    				if(o.getVsfx().equals("하")) o.setUsedPosType(entry.getFeature(WordEntry.IDX_DOV));
+    				else if(o.getVsfx().equals("내")) o.setUsedPosType(entry.getFeature(WordEntry.IDX_BEV));
+    			} else {
+    				o.setUsedPosType(entry.getFeature(WordEntry.IDX_BUSA));
+    			}
+    		}
+    		else {
+    			o.setPosType('@');
+    			o.setUsedPosType('@');
+    		}
     	} 
       results.add(o);
       stems.put(o.getStem(), o);

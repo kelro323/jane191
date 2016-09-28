@@ -178,21 +178,21 @@ public class VerbUtil {
     	else if(entry.getFeature(WordEntry.IDX_NOUN)!='0') {
     		//대명사는 NSM형태가 없으므로 제외하기 위해서
     		//if(entry.getFeature(WordEntry.IDX_NOUN=='d') return false;
-    		if(o.getVsfx().equals("하")&&entry.getFeature(WordEntry.IDX_DOV)!='1') return false;
-    	    else if(o.getVsfx().equals("되")&&entry.getFeature(WordEntry.IDX_BEV)!='1') return false;
+    		if(o.getVsfx().equals("하")&&entry.getFeature(WordEntry.IDX_DOV)=='0') return false;
+    	    else if(o.getVsfx().equals("되")&&entry.getFeature(WordEntry.IDX_BEV)=='0') return false;
     	    else if(o.getVsfx().equals("내")&&entry.getFeature(WordEntry.IDX_NE)!='1') return false;
     	    else if(o.getVsfx().equals("이")&&o.getEomi().equals("어")) return false;
     		o.setScore(AnalysisOutput.SCORE_CORRECT);
     	} else if(entry.getFeature(WordEntry.IDX_BUSA)!='0'){
-    		if(o.getVsfx().equals("하")&&entry.getFeature(WordEntry.IDX_DOV)!='1') return false;
-    	    else if(o.getVsfx().equals("되")&&entry.getFeature(WordEntry.IDX_BEV)!='1') return false;
+    		if(o.getVsfx().equals("하")&&entry.getFeature(WordEntry.IDX_DOV)=='0') return false;
+    	    else if(o.getVsfx().equals("되")&&entry.getFeature(WordEntry.IDX_BEV)=='0') return false;
     	    else if(o.getVsfx().equals("내")&&entry.getFeature(WordEntry.IDX_NE)!='1') return false;
     	    else if(o.getVsfx().equals("이")&&o.getEomi().equals("어")) return false;
     		o.setPos(PatternConstants.POS_AID);
     		o.setScore(AnalysisOutput.SCORE_CORRECT);
     	} else {
-    		if(o.getVsfx().equals("하")&&entry.getFeature(WordEntry.IDX_DOV)!='1') return false;
-    		else if(o.getVsfx().equals("되")&&entry.getFeature(WordEntry.IDX_BEV)!='1') return false;
+    		if(o.getVsfx().equals("하")&&entry.getFeature(WordEntry.IDX_DOV)=='0') return false;
+    		else if(o.getVsfx().equals("되")&&entry.getFeature(WordEntry.IDX_BEV)=='0') return false;
     		else if(o.getVsfx().equals("내")&&entry.getFeature(WordEntry.IDX_NE)!='1') return false;
     		else if(o.getVsfx().equals("이")&&o.getEomi().equals("어")) return false;
     		o.setPos(PatternConstants.POS_VERB);
@@ -248,8 +248,8 @@ public class VerbUtil {
 //    }
     if(entry==null) return false;  
     
-    if(o.getVsfx().equals("하")&&entry.getFeature(WordEntry.IDX_DOV)!='1') return false;
-    if(o.getVsfx().equals("되")&&entry.getFeature(WordEntry.IDX_BEV)!='1') return false;        
+    if(o.getVsfx().equals("하")&&entry.getFeature(WordEntry.IDX_DOV)=='0') return false;
+    if(o.getVsfx().equals("되")&&entry.getFeature(WordEntry.IDX_BEV)=='0') return false;        
     
     o.setScore(AnalysisOutput.SCORE_CORRECT);
     if(entry.getFeature(WordEntry.IDX_NOUN)=='2') {
