@@ -35,6 +35,7 @@ public class MorphAnalyzerTest extends TestCase {
 		MorphAnalyzer analyzer = new MorphAnalyzer();
 		String text = "가다 가지다 나은 내다 놓다 대다 두다 말다 먹다 못하다 버리다 보다 쌓다 않다 오다 있다 주다 하다.";
 		
+		
 		CompoundNounAnalyzer cnAnalyzer = new CompoundNounAnalyzer();
 		StringTokenizer str = new StringTokenizer(text,".");
 		List<AnalysisOutput> outputs = new ArrayList<AnalysisOutput>();
