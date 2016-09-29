@@ -563,7 +563,6 @@ public class MorphAnalyzer {
 
     AnalysisOutput o = new AnalysisOutput(pomis[0],null,morphs[1],PatternConstants.PTN_VM);
     o.setPomi(pomis[1]);
-    o.setUsedPos(PatternConstants.POS_VERB);
   
     try {    
 
