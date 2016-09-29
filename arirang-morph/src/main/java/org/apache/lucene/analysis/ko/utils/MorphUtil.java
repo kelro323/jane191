@@ -139,7 +139,7 @@ public class MorphUtil {
     
     output.setPatn(PatternConstants.PTN_VM);
     output.setPos(PatternConstants.POS_VERB);
-    
+    output.setUsedPos(PatternConstants.POS_VERB);
     if(output.getScore()==AnalysisOutput.SCORE_CORRECT) {
       candidates.add(output);
     }else {
