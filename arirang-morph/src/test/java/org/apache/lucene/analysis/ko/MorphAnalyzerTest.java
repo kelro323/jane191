@@ -33,9 +33,9 @@ public class MorphAnalyzerTest extends TestCase {
 
 	public void testAnalyzer() throws Exception {
 		MorphAnalyzer analyzer = new MorphAnalyzer();
-		String text = "저만 믿고 걱정 마세요.";
+		String text = "눈도 오고 해서 일찍 귀가했다.";
 		
-		
+		//"해서" 처리 방안 고민
 		CompoundNounAnalyzer cnAnalyzer = new CompoundNounAnalyzer();
 		StringTokenizer str = new StringTokenizer(text,".");
 		List<AnalysisOutput> outputs = new ArrayList<AnalysisOutput>();
@@ -49,7 +49,7 @@ public class MorphAnalyzerTest extends TestCase {
 					System.out.println(o+", "+o.getPatn()+", "+
 				o.getScore()+", "+o.getPos()+" RP:"+o.getUsedPos()+"/"+o.getUsedPosType());
 					
-					//System.out.println(o.getVsfx()+", "+o.getEomi());
+					System.out.println(o.getVsfx()+", "+o.getElist());
 				}
 			
 			}
