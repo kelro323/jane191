@@ -52,9 +52,11 @@ public class AnalysisOutput implements Cloneable {
   private int maxWordLen = 0; // the max length of words within compound nouns
   private int dicWordLen = 0; // the sum of the length of words within compound nouns
   
-  private char posType;
-  private char josaType;
-  private char eomiType;
+  private char posType; // 세부 항목
+  private char josaType; // 조사 분류
+  private char eomiType; // 어미 분류
+  private char usedPos; // 실제 사용된 포지션
+  private char usedPosType; //실제 세부 항목
   
   public AnalysisOutput() {
     this.score = SCORE_FAIL;
@@ -225,7 +227,7 @@ public class AnalysisOutput implements Cloneable {
   }
   
   /*
-   * 사전파일에서 형태 char를 등록하기 위한 메소드
+   * 사전파일에서 형태 char를 출력을 위한
    */
   public void setPosType(char posType) {
 	  this.posType = posType;
@@ -249,6 +251,22 @@ public class AnalysisOutput implements Cloneable {
   
   public char getEomiType() {
 	  return eomiType;
+  }
+  //실제 사용되는 형태 정보
+  public void setUsedPos(char usedPos) {
+	  this.usedPos = usedPos;
+  }
+  
+  public char getUsedPos() {
+	  return usedPos;
+  }
+  
+  public void setUsedPosType(char usedPosType) {
+	  this.usedPosType = usedPosType;
+  }
+  
+  public char getUsedPosType() {
+	  return usedPosType;
   }
   /**
    * @return the source

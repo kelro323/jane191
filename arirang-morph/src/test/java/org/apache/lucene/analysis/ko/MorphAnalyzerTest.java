@@ -24,6 +24,7 @@ import org.apache.lucene.analysis.ko.utils.KoreanEnv;
 import org.apache.lucene.analysis.ko.utils.MorphUtil;
 import org.apache.lucene.analysis.ko.utils.NounUtil;
 import org.apache.lucene.analysis.ko.utils.SyllableUtil;
+import org.apache.lucene.analysis.ko.utils.Utilities;
 import org.apache.lucene.analysis.ko.utils.VerbUtil;
 
 import junit.framework.TestCase;
@@ -32,8 +33,9 @@ public class MorphAnalyzerTest extends TestCase {
 
 	public void testAnalyzer() throws Exception {
 		MorphAnalyzer analyzer = new MorphAnalyzer();
-		String text = "어머니가 고명이 가득가득하게 국수를 주셨다.";
+		String text = "경찰서 앞에서 보자";
 		
+		//"해서" 처리 방안 고민
 		CompoundNounAnalyzer cnAnalyzer = new CompoundNounAnalyzer();
 		StringTokenizer str = new StringTokenizer(text,".");
 		List<AnalysisOutput> outputs = new ArrayList<AnalysisOutput>();
@@ -44,37 +46,22 @@ public class MorphAnalyzerTest extends TestCase {
 				String info2 = str2.nextToken();
 				outputs = analyzer.analyze(info2);
 				for(AnalysisOutput o : outputs) {
-					System.out.println(o+", "+o.getPatn()+", "+o.getScore()+", "+o.getPos());
+					System.out.println(o+", "+o.getPatn()+", "+
+				o.getScore()+", "+o.getPos()+" RP:"+o.getUsedPos()+"/"+o.getUsedPosType());
 					
-					//System.out.println(o.getVsfx()+", "+o.getEomi());
+					//System.out.println(o.getVsfx()+", "+o.getElist());
 				}
 			
 			}
 		}
 	
-		
-		String input ="도셨다";
+		String input ="사랑한지";
 		List<AnalysisOutput> candidates = new ArrayList<AnalysisOutput>();
 		boolean josaFlag = true;
 		boolean eomiFlag = true;
-		String stem = "도셨";
-		String end = "다";
-		String[] morphs = EomiUtil.splitEomi(stem, end);
-		
-		String[] pomis = EomiUtil.splitPomi(morphs[0]);
-		char[] jasos = MorphUtil.decompose(pomis[1].charAt(0));
-		
-		String[] results = new String[2];  
-	    results[0] = morphs[0];
-	  
-	    char[] chrs = morphs[0].toCharArray();
-	    
-	    int len = chrs.length;
-	    String pomi = "";
-	    int index = len-1;
-	  
-	    char[] jaso = MorphUtil.decompose(chrs[index]);
-	   
+		String stem = "해";
+		String end = "서";
+
 	    /*        
 		int strlen = input.length();
 		boolean isVerbOnly = false;

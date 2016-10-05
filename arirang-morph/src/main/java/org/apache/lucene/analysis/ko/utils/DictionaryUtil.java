@@ -45,6 +45,8 @@ public class DictionaryUtil {
   
   private static HashMap<String, String> abbreviations;
   
+  //private static HashMap<String, SynonymEntry> synonym;
+  
   /**
    * 사전을 로드한다.
    */
@@ -54,17 +56,33 @@ public class DictionaryUtil {
     List<String> strList = null;
     List<String> compounds = null;
     List<String> abbrevs = null;
+    
+    //synonym = new HashMap<String, SynonymEntry>();
+    //List<String> synList = null;
     try {
       strList = FileUtil.readLines(KoreanEnv.getInstance().getValue(KoreanEnv.FILE_DICTIONARY),"UTF-8");
       strList.addAll(FileUtil.readLines(KoreanEnv.getInstance().getValue(KoreanEnv.FILE_EXTENSION),"UTF-8"));
       compounds = FileUtil.readLines(KoreanEnv.getInstance().getValue(KoreanEnv.FILE_COMPOUNDS),"UTF-8"); 
       abbrevs = FileUtil.readLines(KoreanEnv.getInstance().getValue(KoreanEnv.FILE_ABBREV),"UTF-8"); 
+      //동의어 사전 로드
+      //synList = FileUtil.readLines(KoreanEnv.getInstance().getValue(KoreanEnv.FILE_SYNONYM), "UTF-8");
+      
     } catch (IOException e) {      
       new MorphException(e.getMessage(),e);
     } catch (Exception e) {
       new MorphException(e.getMessage(),e);
     }
-    if(strList==null) throw new MorphException("dictionary is null");;
+    if(strList==null) throw new MorphException("dictionary is null");
+    //동의어 사전 HashMap에 추가
+    /*
+    if(synList==null) throw new MorphException("dictionary is null");
+    for(String str:synList) {
+    	String[] infos = str.split(",");
+    	if(infos.length!=3) continue;
+    	SynonymEntry entry = new SynonymEntry(infos[0].trim(),infos[1].trim(),infos[2].trim(),
+    			Integer.parseInt(infos[3].trim()));
+    	synonym.put(entry.getWord(), entry);
+    }*/
     
     for(String str:strList) {
       String[] infos = str.split("[,]+");
@@ -369,4 +387,13 @@ public class DictionaryUtil {
     }
     return list;
   }
+  
+  /*
+  public static SynonymEntry getSynonym(String key) throws MorphException {
+	  if(synonym ==null) loadDictionary();
+	  if(key.length()==0) return null;
+	  
+	  return synonym.get(key);
+	  
+  }*/
 }

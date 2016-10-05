@@ -132,7 +132,8 @@ public class VerbUtil {
     }
      
     o.setPatn(PatternConstants.PTN_NJCM);
-    o.setPos(PatternConstants.POS_NOUN);  
+    o.setPos(PatternConstants.POS_NOUN);
+    o.setUsedPos(PatternConstants.POS_VERB);
     candidates.add(o);
      
     return true;
@@ -159,7 +160,7 @@ public class VerbUtil {
       o.setVsfx(o.getStem().substring(idxVbSfix));
       o.setStem(o.getStem().substring(0,idxVbSfix));
       entry = DictionaryUtil.getWord(o.getStem());
-      //entry = DictionaryUtil.getAllNoun(o.getStem()); 부사의 능동태형 처리를 위해서 사전 엔트리 변경
+      //entry = DictionaryUtil.getAllNoun(o.getStem()); 부사,동사의 능동태형 처리를 위해서 사전 엔트리 변경
     } else { // 이 축약인 경우
       if(entry==null || chrs.length==3) return false;
       o.setVsfx("이");
@@ -168,22 +169,34 @@ public class VerbUtil {
 
     o.setPatn(PatternConstants.PTN_NSM);
     o.setPos(PatternConstants.POS_NOUN);
+    o.setUsedPos(PatternConstants.POS_VERB);
         
     if(entry!=null) {
-    	//부사형의 능통태 처리를 위해서 변경 
-    	if(entry.getFeature(WordEntry.IDX_NOUN)=='0' && entry.getFeature(WordEntry.IDX_BUSA)=='0') return false;
+    	//부사와 형용사의 능통태 처리를 위해서 변경  
+    	if(entry.getFeature(WordEntry.IDX_NOUN)=='0' && entry.getFeature(WordEntry.IDX_BUSA)=='0' 
+    			&& entry.getFeature(WordEntry.IDX_VERB)=='0') return false;
     	else if(entry.getFeature(WordEntry.IDX_NOUN)!='0') {
-    		if(o.getVsfx().equals("하")&&entry.getFeature(WordEntry.IDX_DOV)!='1') return false;
-    	    else if(o.getVsfx().equals("되")&&entry.getFeature(WordEntry.IDX_BEV)!='1') return false;
+    		//대명사는 NSM형태가 없으므로 제외하기 위해서
+    		//if(entry.getFeature(WordEntry.IDX_NOUN=='d') return false;
+    		if(o.getVsfx().equals("하")&&entry.getFeature(WordEntry.IDX_DOV)=='0') return false;
+    	    else if(o.getVsfx().equals("되")&&entry.getFeature(WordEntry.IDX_BEV)=='0') return false;
     	    else if(o.getVsfx().equals("내")&&entry.getFeature(WordEntry.IDX_NE)!='1') return false;
     	    else if(o.getVsfx().equals("이")&&o.getEomi().equals("어")) return false;
     		o.setScore(AnalysisOutput.SCORE_CORRECT);
-    	} else {
-    		if(o.getVsfx().equals("하")&&entry.getFeature(WordEntry.IDX_DOV)!='1') return false;
-    	    else if(o.getVsfx().equals("되")&&entry.getFeature(WordEntry.IDX_BEV)!='1') return false;
+    	} else if(entry.getFeature(WordEntry.IDX_BUSA)!='0'){
+    		if(o.getVsfx().equals("하")&&entry.getFeature(WordEntry.IDX_DOV)=='0') return false;
+    	    else if(o.getVsfx().equals("되")&&entry.getFeature(WordEntry.IDX_BEV)=='0') return false;
     	    else if(o.getVsfx().equals("내")&&entry.getFeature(WordEntry.IDX_NE)!='1') return false;
     	    else if(o.getVsfx().equals("이")&&o.getEomi().equals("어")) return false;
     		o.setPos(PatternConstants.POS_AID);
+    		o.setScore(AnalysisOutput.SCORE_CORRECT);
+    	} else {
+    		if(o.getVsfx().equals("하")&&entry.getFeature(WordEntry.IDX_DOV)=='0') return false;
+    		else if(o.getVsfx().equals("되")&&entry.getFeature(WordEntry.IDX_BEV)=='0') return false;
+    		else if(o.getVsfx().equals("내")&&entry.getFeature(WordEntry.IDX_NE)!='1') return false;
+    		else if(o.getVsfx().equals("이")&&o.getEomi().equals("어")) return false;
+    		o.setPos(PatternConstants.POS_VERB);
+    		o.setUsedPos(PatternConstants.POS_VERB);
     		o.setScore(AnalysisOutput.SCORE_CORRECT);
     	}
     	/*
@@ -203,7 +216,7 @@ public class VerbUtil {
     return (o.getScore()==AnalysisOutput.SCORE_CORRECT);
 
   }
-  //여기도 부사의 능동태형 처리를 위해서 수정을 해야하나 아직 오류가 나지 않아 처리 하지 않음 
+  //여기도 부사,동사의 능동태형 처리를 위해서 수정을 해야하나 아직 오류가 나지 않아 처리 하지 않음 
   public static boolean ananlysisNSMXM(AnalysisOutput o, List<AnalysisOutput> candidates) throws MorphException {
    
     int idxXVerb = VerbUtil.endsWithXVerb(o.getStem());
@@ -228,14 +241,15 @@ public class VerbUtil {
     o.setStem(stomis[0].substring(0,idxVbSfix));
     o.setPatn(PatternConstants.PTN_NSMXM);
     o.setPos(PatternConstants.POS_NOUN);
+    o.setUsedPos(PatternConstants.POS_VERB);
     WordEntry entry = DictionaryUtil.getNoun(o.getStem());
 //    if(entry==null&&NounUtil.confirmCNoun(o)&&o.getCNounList().size()>0)  {
 //      entry = DictionaryUtil.getNoun(o.getCNounList().get(o.getCNounList().size()-1));
 //    }
     if(entry==null) return false;  
     
-    if(o.getVsfx().equals("하")&&entry.getFeature(WordEntry.IDX_DOV)!='1') return false;
-    if(o.getVsfx().equals("되")&&entry.getFeature(WordEntry.IDX_BEV)!='1') return false;        
+    if(o.getVsfx().equals("하")&&entry.getFeature(WordEntry.IDX_DOV)=='0') return false;
+    if(o.getVsfx().equals("되")&&entry.getFeature(WordEntry.IDX_BEV)=='0') return false;        
     
     o.setScore(AnalysisOutput.SCORE_CORRECT);
     if(entry.getFeature(WordEntry.IDX_NOUN)=='2') {
@@ -280,6 +294,7 @@ public class VerbUtil {
       o.addElist("이");
       if(DictionaryUtil.getVerb(o.getStem())!=null) {
         o.setPos(PatternConstants.POS_VERB);
+        o.setUsedPos(PatternConstants.POS_VERB);
         o.setPatn(PatternConstants.PTN_VMCM);
         o.setScore(AnalysisOutput.SCORE_CORRECT);
         candidates.add(o);
@@ -325,6 +340,7 @@ public class VerbUtil {
 
     if(DictionaryUtil.getVerb(o.getStem())!=null) {
       o.setPos(PatternConstants.POS_VERB);
+      o.setUsedPos(PatternConstants.POS_VERB);
       o.setPatn(PatternConstants.PTN_VMXM);
       o.setScore(AnalysisOutput.SCORE_CORRECT);
       candidates.add(o);

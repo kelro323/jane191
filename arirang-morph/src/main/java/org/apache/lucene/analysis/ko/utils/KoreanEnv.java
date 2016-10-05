@@ -48,6 +48,8 @@ public class KoreanEnv {
   
   public static final String FILE_CJ = "cj.dic";
   
+  public static final String FILE_SYNONYM = "synonym.dic";
+  
   public static final String FILE_KOREAN_PROPERTY = "org/apache/lucene/analysis/ko/korean.properties";
   
   private Properties defaults = null;
@@ -95,6 +97,8 @@ public class KoreanEnv {
     defaults.setProperty(FILE_UNCOMPOUNDS,"org/apache/lucene/analysis/ko/dic/uncompounds.dic");
     defaults.setProperty(FILE_ABBREV,"org/apache/lucene/analysis/ko/dic/abbreviation.dic");
     defaults.setProperty(FILE_CJ,"org/apache/lucene/analysis/ko/dic/cj.dic");
+    //동의어 사전도 추가
+    defaults.setProperty(FILE_SYNONYM, "org/apache/lucene/analysis/ko/dic/synonym.dic");
   }
 
   
