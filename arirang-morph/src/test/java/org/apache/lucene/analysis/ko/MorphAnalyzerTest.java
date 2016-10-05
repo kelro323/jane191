@@ -33,7 +33,7 @@ public class MorphAnalyzerTest extends TestCase {
 
 	public void testAnalyzer() throws Exception {
 		MorphAnalyzer analyzer = new MorphAnalyzer();
-		String text = "눈도 오고 해서 일찍 귀가했다.";
+		String text = "경찰서 앞에서 보자";
 		
 		//"해서" 처리 방안 고민
 		CompoundNounAnalyzer cnAnalyzer = new CompoundNounAnalyzer();
@@ -49,7 +49,7 @@ public class MorphAnalyzerTest extends TestCase {
 					System.out.println(o+", "+o.getPatn()+", "+
 				o.getScore()+", "+o.getPos()+" RP:"+o.getUsedPos()+"/"+o.getUsedPosType());
 					
-					System.out.println(o.getVsfx()+", "+o.getElist());
+					//System.out.println(o.getVsfx()+", "+o.getElist());
 				}
 			
 			}
@@ -59,10 +59,9 @@ public class MorphAnalyzerTest extends TestCase {
 		List<AnalysisOutput> candidates = new ArrayList<AnalysisOutput>();
 		boolean josaFlag = true;
 		boolean eomiFlag = true;
-		String stem = "무거운";
-		String eomi = "지";
-		String[] morphs = EomiUtil.splitEomi(stem, eomi);
-	
+		String stem = "해";
+		String end = "서";
+
 	    /*        
 		int strlen = input.length();
 		boolean isVerbOnly = false;

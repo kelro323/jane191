@@ -89,7 +89,7 @@ public class MorphAnalyzer {
     boolean isVerbOnly = MorphUtil.hasVerbOnly(input);
     
     //'서'를 조사에 추가함으로서 생기는 경찰서, 소방서 등과 같은 오류 방지
-    if(!(DictionaryUtil.getAllNoun(input)!=null && input.endsWith("서"))) {
+    if(!(input.equals("경찰서")||input.equals("소방서"))) {
     	analysisByRule(input, candidates); 
     }
     
@@ -100,7 +100,7 @@ public class MorphAnalyzer {
     
     // check if one letter exists in the compound noun entries
     checkOneLetterInCNoun(candidates);
-    
+
     Collections.sort(candidates,new AnalysisOutputComparator<AnalysisOutput>());
     
     // 복합명사 분해여부 결정하여 분해
@@ -291,7 +291,6 @@ public class MorphAnalyzer {
     analysisWithEomi(input,"",candidates);
     
     for(int i=strlen-1;i>0;i--) {
-      
       String stem = input.substring(0,i);
       String eomi = input.substring(i);
 
@@ -300,7 +299,7 @@ public class MorphAnalyzer {
         analysisWithJosa(stem,eomi,candidates);
       }
       
-      if(eomiFlag) {      
+      if(eomiFlag) {  
         analysisWithEomi(stem,eomi,candidates);
       }      
       
