@@ -88,7 +88,7 @@ public class MorphAnalyzer {
     List<AnalysisOutput> candidates = new ArrayList<AnalysisOutput>();        
     boolean isVerbOnly = MorphUtil.hasVerbOnly(input);
     
-    //'서'를 조사에 추가함으로서 생기는 경찰서, 소방서 등과 같은 오류 방지
+    //'서'를 조사에 추가함으로서 생기는 경찰서, 소방서 같은 오류 방지
     if(!(input.equals("경찰서")||input.equals("소방서"))) {
     	analysisByRule(input, candidates); 
     }
