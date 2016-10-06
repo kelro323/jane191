@@ -89,6 +89,7 @@ public class MorphAnalyzer {
     boolean isVerbOnly = MorphUtil.hasVerbOnly(input);
     
     //'서'를 조사에 추가함으로서 생기는 경찰서, 소방서 같은 오류 방지
+    //다른 형태가 있는지에 대한 조사는 필요 
     if(!(input.equals("경찰서")||input.equals("소방서"))) {
     	analysisByRule(input, candidates); 
     }
