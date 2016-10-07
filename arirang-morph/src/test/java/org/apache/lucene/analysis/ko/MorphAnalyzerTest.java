@@ -33,7 +33,7 @@ public class MorphAnalyzerTest extends TestCase {
 
 	public void testAnalyzer() throws Exception {
 		MorphAnalyzer analyzer = new MorphAnalyzer();
-		String text = "경찰서 앞에서 보자";
+		String text = "낯선 경찰서 앞에서 보자";
 		
 		//"해서" 처리 방안 고민
 		CompoundNounAnalyzer cnAnalyzer = new CompoundNounAnalyzer();
