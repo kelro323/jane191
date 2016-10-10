@@ -1,4 +1,4 @@
-package org.apache.lucene.analysis.ko.utils;
+package org.apache.lucene.analysis.ko.morph;
 
 public class SynonymEntry {
 	
