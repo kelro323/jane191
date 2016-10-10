@@ -427,7 +427,7 @@ public class MorphAnalyzer {
     if((entry=DictionaryUtil.getWord(word))!=null) {
     	if(entry.getFeature(WordEntry.IDX_NOUN)!='0') {
     		if(entry.getFeature(WordEntry.IDX_BUSA)!='0') {
-    			//이, 그 , 저, 안, 못 단독 사용일 시 대부분 부사형이므로 명사형 결과 배제(다 추가 예정)
+    			//이, 그 , 저, 안, 못 단독 사용일 시 대부분 관형사형(부사 분류)이므로 명사형 결과 배제(다 추가 예정)
     			if(!(word.equals("이")||word.equals("그")||word.equals("저")
     					||word.equals("못")||word.equals("안"))) {
         			output.setScore(AnalysisOutput.SCORE_CORRECT);

@@ -61,7 +61,7 @@ public class MorphAnalyzerTest extends TestCase {
 		boolean eomiFlag = true;
 		String stem = "해";
 		String end = "서";
-
+		
 	    /*        
 		int strlen = input.length();
 		boolean isVerbOnly = false;

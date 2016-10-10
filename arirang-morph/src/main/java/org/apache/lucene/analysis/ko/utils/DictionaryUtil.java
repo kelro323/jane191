@@ -78,7 +78,7 @@ public class DictionaryUtil {
     if(synList==null) throw new MorphException("dictionary is null");
     for(String str:synList) {
     	String[] infos = str.split(",");
-    	if(infos.length!=3) continue;
+    	if(infos.length!=4) continue;
     	SynonymEntry entry = new SynonymEntry(infos[0].trim(),infos[1].trim(),infos[2].trim(),
     			Integer.parseInt(infos[3].trim()));
     	synonym.put(entry.getWord(), entry);
