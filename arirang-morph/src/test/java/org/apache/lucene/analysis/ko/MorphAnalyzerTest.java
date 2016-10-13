@@ -1,32 +1,12 @@
 package org.apache.lucene.analysis.ko;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.StringTokenizer;
 
 import org.apache.lucene.analysis.ko.morph.AnalysisOutput;
-import org.apache.lucene.analysis.ko.morph.AnalysisOutputComparator;
-import org.apache.lucene.analysis.ko.morph.CompoundEntry;
 import org.apache.lucene.analysis.ko.morph.CompoundNounAnalyzer;
-import org.apache.lucene.analysis.ko.morph.LangToken;
-import org.apache.lucene.analysis.ko.morph.LanguageSpliter;
 import org.apache.lucene.analysis.ko.morph.MorphAnalyzer;
-import org.apache.lucene.analysis.ko.morph.PatternConstants;
-import org.apache.lucene.analysis.ko.morph.WordEntry;
-import org.apache.lucene.analysis.ko.utils.DictionaryUtil;
-import org.apache.lucene.analysis.ko.utils.EomiUtil;
-import org.apache.lucene.analysis.ko.utils.FileUtil;
-import org.apache.lucene.analysis.ko.utils.IrregularUtil;
-import org.apache.lucene.analysis.ko.utils.KoreanEnv;
-import org.apache.lucene.analysis.ko.utils.MorphUtil;
-import org.apache.lucene.analysis.ko.utils.NounUtil;
-import org.apache.lucene.analysis.ko.utils.SyllableUtil;
-import org.apache.lucene.analysis.ko.utils.Utilities;
-import org.apache.lucene.analysis.ko.utils.VerbUtil;
-
 import junit.framework.TestCase;
 
 public class MorphAnalyzerTest extends TestCase {
@@ -35,7 +15,6 @@ public class MorphAnalyzerTest extends TestCase {
 		MorphAnalyzer analyzer = new MorphAnalyzer();
 		String text = "낯선 경찰서 앞에서 보자";
 		
-		//"해서" 처리 방안 고민
 		CompoundNounAnalyzer cnAnalyzer = new CompoundNounAnalyzer();
 		StringTokenizer str = new StringTokenizer(text,".");
 		List<AnalysisOutput> outputs = new ArrayList<AnalysisOutput>();
@@ -47,7 +26,7 @@ public class MorphAnalyzerTest extends TestCase {
 				outputs = analyzer.analyze(info2);
 				for(AnalysisOutput o : outputs) {
 					System.out.println(o+", "+o.getPatn()+", "+
-				o.getScore()+", "+o.getPos()+" RP:"+o.getUsedPos()+"/"+o.getUsedPosType());
+				o.getScore()+", "+o.getPos()+" UP:"+o.getUsedPos()+"/"+o.getUsedPosType());
 					
 					//System.out.println(o.getVsfx()+", "+o.getElist());
 				}
@@ -61,6 +40,7 @@ public class MorphAnalyzerTest extends TestCase {
 		boolean eomiFlag = true;
 		String stem = "해";
 		String end = "서";
+		
 		
 	    /*        
 		int strlen = input.length();
