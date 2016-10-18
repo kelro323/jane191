@@ -7,13 +7,15 @@ import java.util.StringTokenizer;
 import org.apache.lucene.analysis.ko.morph.AnalysisOutput;
 import org.apache.lucene.analysis.ko.morph.CompoundNounAnalyzer;
 import org.apache.lucene.analysis.ko.morph.MorphAnalyzer;
+import org.apache.lucene.analysis.ko.utils.VerbUtil;
+
 import junit.framework.TestCase;
 
 public class MorphAnalyzerTest extends TestCase {
 
 	public void testAnalyzer() throws Exception {
 		MorphAnalyzer analyzer = new MorphAnalyzer();
-		String text = "낯선 경찰서 앞에서 보자";
+		String text = "내가 가장 좋아하는 과일은 포도였다.";
 		
 		CompoundNounAnalyzer cnAnalyzer = new CompoundNounAnalyzer();
 		StringTokenizer str = new StringTokenizer(text,".");
@@ -27,14 +29,13 @@ public class MorphAnalyzerTest extends TestCase {
 				for(AnalysisOutput o : outputs) {
 					System.out.println(o+", "+o.getPatn()+", "+
 				o.getScore()+", "+o.getPos()+" UP:"+o.getUsedPos()+"/"+o.getUsedPosType());
-					
-					//System.out.println(o.getVsfx()+", "+o.getElist());
+					//System.out.println(o.getVsfx()+", "+o.getPomi());	
 				}
 			
 			}
 		}
 	
-		String input ="사랑한지";
+		String input ="딸기다";
 		List<AnalysisOutput> candidates = new ArrayList<AnalysisOutput>();
 		boolean josaFlag = true;
 		boolean eomiFlag = true;

@@ -173,33 +173,44 @@ public class MorphAnalyzer {
         	//단일 음절이므로 결과값은 similar correct가 나올 것 이고 어간의 끝 음절이 '들','뿐'인지 체크
         	//'들'이 나오는 대부분의 유형인 NJ에서는 조사에 그냥 '들'을 포함. (차후 접사 항목 추가시 접사로 이동) -> 이럼 addResult 메소드의 조건값도 변경해야함
         	//'뿐'이 나오는 대부분의 유형인 NSM에선 NJSM 새로운 패턴으로 변환.
-        	if(o.getScore()==AnalysisOutput.SCORE_SIM_CORRECT && 
-        			(o.getStem().endsWith("들")||o.getStem().endsWith("뿐"))) {
-        		int stlength = o.getStem().length();
-        		if(o.getPatn()==PatternConstants.PTN_NJ) {
-        			o.setJosa(o.getStem().substring(stlength-1)+o.getJosa());
-        			o.setStem(o.getStem().substring(0, stlength-1));
-        			o.setScore(AnalysisOutput.SCORE_CORRECT);
-        		} else if(o.getPatn()==PatternConstants.PTN_NSM) {
-        			o.setPatn(PatternConstants.PTN_NJSM);
-        			o.setJosa(o.getStem().substring(stlength-1));
-        			o.setStem(o.getStem().substring(0, stlength-1));
-        			o.setScore(AnalysisOutput.SCORE_CORRECT);
+        	if(o.getScore()==AnalysisOutput.SCORE_SIM_CORRECT ) {
+        		if(o.getStem().endsWith("들")||o.getStem().endsWith("뿐")) {
+        			int stlength = o.getStem().length();
+            		if(o.getPatn()==PatternConstants.PTN_NJ) {
+            			o.setJosa(o.getStem().substring(stlength-1)+o.getJosa());
+            			o.setStem(o.getStem().substring(0, stlength-1));
+            			o.setScore(AnalysisOutput.SCORE_CORRECT);
+            		} else if(o.getPatn()==PatternConstants.PTN_NSM) {
+            			o.setPatn(PatternConstants.PTN_NJSM);
+            			o.setJosa(o.getStem().substring(stlength-1));
+            			o.setStem(o.getStem().substring(0, stlength-1));
+            			o.setScore(AnalysisOutput.SCORE_CORRECT);
+            		}
+            		//이다의 축약형 '다'의 처리를 위해서 추가한 부분인데, 변경이 필요함 
+                	//ex)'사이다'같은 경우 사이다(N),사이(N)+다(j)의 형태가 가능한데 이럴 경우 둘 다 출력하기 위해서 필요함
+                	//'다'의 조사 추가는 많은 오류가 생길 가능성이 있으므로 현재 배제 중
+        		} else if(o.getPatn() == PatternConstants.PTN_N && o.getStem().endsWith("다")) {
+        			WordEntry entry = 
+            				DictionaryUtil.getAllNoun(o.getStem().substring(0, o.getStem().length()-1));
+            		
+            		if(entry!=null ) {
+            			o.setPatn(PatternConstants.PTN_NJ);
+            			o.setJosa(o.getStem().substring(o.getStem().length()-1));
+            			o.setStem(o.getStem().substring(0, o.getStem().length()-1));
+            			o.setScore(AnalysisOutput.SCORE_CORRECT);
+            		}
         		}
         	}
-        	//이다의 축약형 '다'의 처리를 위해서 추가한 부분인데, 변경이 필요함 
-        	//ex)'사이다'같은 경우 사이다(N),사이(N)+다(j)의 형태가 가능한데 이럴 경우 둘 다 출력하기 위해서 필요함
-        	//'다'의 조사 추가는 많은 오류가 생길 가능성이 있으므로 현재 배제 중
-        	if(o.getScore()==AnalysisOutput.SCORE_SIM_CORRECT 
-        			&& o.getPatn() == PatternConstants.PTN_N && o.getStem().endsWith("다")) {
-        		WordEntry entry = 
-        				DictionaryUtil.getAllNoun(o.getStem().substring(0, o.getStem().length()-1));
-        		
-        		if(entry!=null ) {
-        			o.setPatn(PatternConstants.PTN_NJ);
-        			o.setJosa(o.getStem().substring(o.getStem().length()-1));
-        			o.setStem(o.getStem().substring(0, o.getStem().length()-1));
-        			o.setScore(AnalysisOutput.SCORE_CORRECT);
+        	// -이다의 어간 -이-에 어미가 결합한 경우 NJ로 변환을 위하여 추가
+        	// ex) 사람+이+어서(e) -> 사람+이어서(j) 
+        	if(o.getScore()==AnalysisOutput.SCORE_CORRECT && "이".equals(o.getVsfx()) 
+        			&& o.getPatn()==PatternConstants.PTN_NSM) {
+        		o.setPatn(PatternConstants.PTN_NJ);
+        		o.setUsedPos(PatternConstants.POS_NOUN);
+        		if(o.getPomi()!=null && o.getPomi().length()!=0) {
+        			o.setJosa(o.getVsfx()+o.getPomi()+o.getEomi());
+        		} else {
+        			o.setJosa(o.getVsfx()+o.getEomi());
         		}
         	}
           addResults(o,results,stems);
