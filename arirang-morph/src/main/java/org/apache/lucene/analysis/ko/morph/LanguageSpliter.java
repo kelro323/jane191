@@ -17,7 +17,7 @@ public class LanguageSpliter {
 	
 	public static char TYPE_SYMBOL = 's';
 	
-	public List<LangToken> split(String input) {
+	public static List<LangToken> split(String input) {
 		
 		List<LangToken> results = new ArrayList<LangToken>();
 		
@@ -33,7 +33,7 @@ public class LanguageSpliter {
 				type = TYPE_HAN;
 			else if(Character.isDigit(c))
 				type = TYPE_NUM;
-			else if(c>'a' && c<'Z')
+			else if((c>='A' && c<='Z') || (c>='a' && c<='z'))
 				type = TYPE_ENG;
 			else if(Character.isLetter(c))
 				type = TYPE_CJ;

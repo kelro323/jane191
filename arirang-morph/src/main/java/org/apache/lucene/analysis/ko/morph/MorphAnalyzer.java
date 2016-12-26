@@ -295,7 +295,7 @@ public class MorphAnalyzer {
   
     boolean josaFlag = true;
     boolean eomiFlag = true;
-        
+       
     int strlen = input.length();
     
 //    boolean isVerbOnly = MorphUtil.hasVerbOnly(input);
