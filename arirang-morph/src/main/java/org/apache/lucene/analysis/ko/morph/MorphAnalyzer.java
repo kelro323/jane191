@@ -377,8 +377,14 @@ public class MorphAnalyzer {
     		if(o.getJosa().equals(old.getVsfx()+old.getEomi())&& old.getVsfx().equals("이")) {
         		results.remove(old);
         		WordEntry entry = DictionaryUtil.getWord(o.getStem());
-        		if(entry!=null) o.setPosType(entry.getFeature(WordEntry.IDX_NOUN));
-        		else o.setPosType('@');
+        		if(entry!=null) {
+        			o.setPosType(entry.getFeature(WordEntry.IDX_NOUN));
+        			o.setUsedPosType(entry.getFeature(WordEntry.IDX_NOUN));
+        		}
+        		else {
+        			o.setPosType('@');
+        			o.setUsedPosType('@');
+        		}
         		results.add(o);
         		stems.put(o.getStem(), o);
         	}
@@ -386,8 +392,14 @@ public class MorphAnalyzer {
     		if(o.getJosa().equals(old.getJosa()+old.getVsfx()+old.getEomi())&& old.getVsfx().equals("이")) {
     			results.remove(old);
     			WordEntry entry = DictionaryUtil.getWord(o.getStem());
-        		if(entry!=null) o.setPosType(entry.getFeature(WordEntry.IDX_NOUN));
-        		else o.setPosType('@');
+        		if(entry!=null) {
+        			o.setPosType(entry.getFeature(WordEntry.IDX_NOUN));
+        			o.setUsedPosType(entry.getFeature(WordEntry.IDX_NOUN));
+        		}
+        		else {
+        			o.setPosType('@');
+        			o.setUsedPosType('@');
+        		}
     			results.add(o);
     			stems.put(o.getStem(), o);
     		}
