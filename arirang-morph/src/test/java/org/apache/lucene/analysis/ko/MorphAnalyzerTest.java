@@ -17,7 +17,7 @@ public class MorphAnalyzerTest extends TestCase {
 
 	public void testAnalyzer() throws Exception {
 		MorphAnalyzer analyzer = new MorphAnalyzer();
-		String text = "IMF때 주식투자가 실패하였다.";
+		String text = "경대하는 사람이라 생각하였다.";
 		
 		CompoundNounAnalyzer cnAnalyzer = new CompoundNounAnalyzer();
 		StringTokenizer str = new StringTokenizer(text,".");
